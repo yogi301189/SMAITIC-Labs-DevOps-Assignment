@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: node-api
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: node-api
+
+  template:
+    metadata:
+      labels:
+        app: node-api
+
+    spec:
+      containers:
+      - name: node-api
+
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 3000
+          name: api-web
+
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+
+          limits:
+            cpu: 500m
+            memory: 512Mi
+
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: api-web
+
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: api-web
