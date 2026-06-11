@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: yourdockerhub/node-api
+  repository: yogi301189/node-api
   tag: latest
   pullPolicy: IfNotPresent
 
