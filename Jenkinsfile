@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MARS_IMAGE = "yogesh-docker/node-api"
+        MARS_IMAGE = "yourdockerhub/node-api"
     }
 
     stages {
