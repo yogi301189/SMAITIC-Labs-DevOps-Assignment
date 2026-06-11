@@ -20,6 +20,7 @@ spec:
       - name: node-api
 
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 3000
           name: api-web
